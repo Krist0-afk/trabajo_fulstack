@@ -31,7 +31,7 @@ public class VideojuegoServiceTest {
     @DisplayName("Testing 1 - FindAll Service")
     void testFindAll(){
         //Simular la creación de un objeto de videojuego
-        when(repo.findAll()).thenReturn(List.of(new Videojuego(1L,"Sonic Pinball","SEGA Genesis")));
+        when(repo.findAll()).thenReturn(List.of(new Videojuego(1L,"Sonic Pinball","SEGA Genesis",20,"Este juego de un mono que corre")));
         //Llamar al metodo de servicio que sera probado
         List<Videojuego> resultado =  service.findAll();
         //Verificacion

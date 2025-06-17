@@ -17,7 +17,7 @@ public class VideojuegoService {
     public List<Videojuego> findAll(){
         return repo.findAll();
     }
-    //Guardar //POST
+    //Guardar POST
     public Videojuego save(Videojuego v){
         return repo.save(v);
     }
@@ -25,4 +25,6 @@ public class VideojuegoService {
     public void delete(Long id){
         repo.deleteById(id);
     }
+    //Actualizar Update
+    public void update(Videojuego v){repo.save(v);}
 }

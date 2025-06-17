@@ -38,7 +38,7 @@ public class VideojuegoControllerTest {
     @DisplayName("Testing Controller 1 - obtener todo")
     void testGetAll() throws Exception {
         //1 simular con mockito un dato fake
-        when(service.findAll()).thenReturn(List.of(new Videojuego(1L, "Tetris","PC",20)));
+        when(service.findAll()).thenReturn(List.of(new Videojuego(1L, "Tetris","PC",20,"Este juego es creativo")));
         //2.-Ejecutar una peticion get falsa
         mockMvc.perform(get("/api/videojuegos"))
                 //lo que esperamos en esa peticion
@@ -51,10 +51,10 @@ public class VideojuegoControllerTest {
     @DisplayName("Testing controller 2-Guardar POST")
     void testPost() throws Exception {
 
-        Videojuego v = new Videojuego( null, "Bubsy","SEGA Genesis",20);
+        Videojuego v = new Videojuego( null, "Bubsy","SEGA Genesis",20,"Juego de un gato parecido al crash");
 
         //2 Simular con mockito el guardar este videojuego y me devuelve uno con el ud ya asignado
-        when(service.save(any())).thenReturn(new Videojuego(1L,"Bubsy","SEGA Genesis",20));
+        when(service.save(any())).thenReturn(new Videojuego(1L,"Bubsy","SEGA Genesis",20,"Juego de un gato parecido al crash"));
             //3
         mockMvc.perform(post("/api/videojuegos")
                 .contentType("application/json")// indicar que el contenido es JSON
@@ -77,6 +77,19 @@ public class VideojuegoControllerTest {
         mockMvc.perform(delete("/api/videojuegos/1"))
                 // 3 esperemos un estado 200
                 .andExpect(status().isOk());
+
+    }
+    @Test
+    @DisplayName("Testing Controller 4 -UPDATE")
+    void testUpdate() throws Exception {
+        //1 simular con mockito un dato fake
+        when(service.findAll()).thenReturn(List.of(new Videojuego(1L, "Tetris","PC",20,"Este juego es creativo")));
+        //2.-Ejecutar una peticion get falsa
+        mockMvc.perform(get("/api/videojuegos"))
+                //lo que esperamos en esa peticion
+                .andExpect(status().isOk())//codigo 200
+                //4.- verificacion que el primer elemento JSON sea el juego Tetris
+                .andExpect(jsonPath("$[0].nombre").value("Tetris"));
 
     }
 

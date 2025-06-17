@@ -22,4 +22,8 @@ public class Videojuego {
 
     @Schema(description = "Cantidad de videojuegos en bodega", example ="20")
     private int stock;
+
+    @Schema(description = "Descripción general del videojuego", example = "Aventura épica con mundo abierto.")
+    private String descripcion;
+
 }

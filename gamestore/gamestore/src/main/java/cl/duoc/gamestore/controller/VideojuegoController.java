@@ -45,4 +45,11 @@ public class VideojuegoController {
     public void delete(@PathVariable Long id){
         service.delete(id);
     }
+
+
+
+    @PutMapping // actualizar
+    public Videojuego update(@RequestBody Videojuego v){return service.save(v);}
+
+
 }
